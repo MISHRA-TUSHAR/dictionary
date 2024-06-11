@@ -47,7 +47,6 @@ class HomePage extends StatelessWidget {
                                   controller: searchController,
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
-                                    // Other decoration properties if needed
                                   ),
                                 ),
                               ),
@@ -188,16 +187,10 @@ class HomePage extends StatelessWidget {
                                                       ),
                                                     ),
                                                   ),
-                                                  // Text("Only ${dataController.dictionary[dataController.random.value]['type']} students know that!",style: TextStyle(
-                                                  //     fontSize: 18,
-                                                  //     fontWeight: FontWeight.w500
-                                                  // ),)
                                                 ],
                                               ),
                                             ),
-                                            onTap: () {
-                                              // Do something when the ListTile is tapped
-                                            },
+                                            onTap: () {},
                                           ),
                                         ),
                                       )),
@@ -243,9 +236,7 @@ class HomePage extends StatelessWidget {
                                                 ],
                                               ),
                                             ),
-                                            onTap: () {
-                                              // Do something when the ListTile is tapped
-                                            },
+                                            onTap: () {},
                                           ),
                                         ),
                                       )),
@@ -466,9 +457,7 @@ class HomePage extends StatelessWidget {
                                                         color: Colors.black,
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 20
-                                                        // Other text styles can be added here
-                                                        ),
+                                                        fontSize: 20),
                                                   ),
                                                   TextSpan(
                                                     text:
@@ -478,10 +467,7 @@ class HomePage extends StatelessWidget {
                                                             .withOpacity(0.8),
                                                         fontSize: 17,
                                                         fontWeight:
-                                                            FontWeight.w500
-
-                                                        // Add your other styles here
-                                                        ),
+                                                            FontWeight.w500),
                                                   ),
                                                 ],
                                               ),
@@ -497,7 +483,6 @@ class HomePage extends StatelessWidget {
                                               },
                                             ),
                                             onTap: () {
-                                              // Do something when the ListTile is tapped
                                               print(
                                                   'Tapped on ${dataController.searchedword[index]}');
                                             },
@@ -519,26 +504,22 @@ class HomePage extends StatelessWidget {
 
   String convertToHin(String mean) {
     String result = '';
-    RegExp pattern = RegExp(
-        r'(?<=[a-zA-Z0-9])[, -]+(?=[a-zA-Z0-9])'); // Matches , - or spaces between English letters
+    RegExp pattern =
+        RegExp(r'(?<=[a-zA-Z0-9])[, -]+(?=[a-zA-Z0-9])'); // Matches
 
     String cleanedString = mean.replaceAllMapped(pattern, (match) {
-      return ''; // Replace matched characters with an empty string
+      return '';
     });
-    RegExp pattern2 =
-        RegExp(r'[^, \-\u0900-\u097F]+'); // Matches characters to be removed
+    RegExp pattern2 = RegExp(r'[^, \-\u0900-\u097F]+');
 
     result = cleanedString.replaceAll(pattern2, '');
 
     result = result.replaceAll(RegExp(r'\s+'), ' ');
 
-    // Remove extra commas between words
     result = result.replaceAll(RegExp(r',+,+'), ',');
 
-    // Remove leading and trailing commas
     result = result.replaceAll(RegExp(r'^,+|,+$'), '');
 
-    // Remove leading and trailing spaces
     result = result.trim();
     result = result.replaceAll(RegExp(r',\s+'), ',');
     result = result.replaceAll(RegExp(r',{2,}'), ',');
